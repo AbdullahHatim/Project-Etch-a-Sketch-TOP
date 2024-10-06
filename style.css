@@ -1,8 +1,10 @@
+root {
+  --pixel-color: yellow;
+}
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14pt;
 }
-
 * {
   margin: 0px;
   padding: 0px;
@@ -10,7 +12,8 @@ html {
 }
 
 body {
-  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -23,4 +26,22 @@ body {
   width: 25%;
   aspect-ratio: 1/1;
   background-color: yellow;
+}
+
+#changeGridSize {
+  margin: 10px auto;
+  background: linear-gradient(blanchedalmond, palegoldenrod);
+  padding: 10px;
+  border: 3px black solid;
+  border-radius: 10px;
+}
+
+#changeGridSize:hover {
+  transform: translate(0%, -5%);
+}
+
+#changeGridSize:active {
+  transform: translate(0%, 5%);
+  border: inset black;
+  background: linear-gradient(rgb(245, 210, 159), rgb(242, 234, 149));
 }
