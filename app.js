@@ -1,3 +1,4 @@
+const SPECIAL_COLORS_COUNT = 3;
 const colorOptions = getColorOptions();
 let selectedColor = "red";
 let isLeftClick = false;
@@ -33,8 +34,19 @@ function removeElementBackgroundColor(element) {
   element.classList.remove(...colorOptions);
 }
 function changeElementBackgroundColor(element) {
-  removeElementBackgroundColor(element);
-  element.classList.add(`${selectedColor}`);
+  if (selectedColor === "interactionRGB") {
+    removeElementBackgroundColor(element);
+    let randomIndex = Math.floor(
+      Math.random() * (colorOptions.length - SPECIAL_COLORS_COUNT)
+    );
+    selectedColor = colorOptions[randomIndex];
+    element.classList.add(`${selectedColor}`);
+    selectedColor = "interactionRGB";
+  } else if (selectedColor === "s") {
+  } else {
+    removeElementBackgroundColor(element);
+    element.classList.add(`${selectedColor}`);
+  }
 }
 
 function addDrawHandlers(container) {
