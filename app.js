@@ -13,21 +13,28 @@ function getColorOptions() {
       selectedColor = e.target.classList[0];
     });
   });
+
   return colors;
 }
 
 function getNewContainer() {
-  // Remove the previous container if it exists
   const oldContainer = document.querySelector(".container");
   if (oldContainer) {
     oldContainer.remove();
   }
 
-  // Create a new container
   const container = document.createElement("div");
   container.classList.add("container");
 
   return container;
+}
+
+function removeElementBackgroundColor(element) {
+  element.classList.remove(...colorOptions);
+}
+function changeElementBackgroundColor(element) {
+  removeElementBackgroundColor(element);
+  element.classList.add(`${selectedColor}`);
 }
 
 function addDrawHandlers(container) {
@@ -61,23 +68,30 @@ function showGrid(size = 100) {
   addDrawHandlers(container);
   document.body.append(container);
 }
-function removeElementBackgroundColor(element) {
-  element.classList.remove(...colorOptions);
-}
-function changeElementBackgroundColor(element) {
-  removeElementBackgroundColor(element);
-  element.classList.add(`${selectedColor}`);
-}
-function mouseoverHandler(e) {}
 
-showGrid(100);
-changeGridSize.addEventListener("click", (e) => {
-  const divAmount = +prompt("Enter Grid Size: ");
-  showGrid(divAmount);
-});
+function resetGridCells() {
+  showGrid(100);
+}
 
-toggleGrid.addEventListener("click", (e) => {
-  document.querySelectorAll(".grid").forEach((v) => {
-    v.classList.toggle("toggleOutLine");
+function addToolbarHandlers() {
+  // Id Elements are automatically added to global scope on modern browsers
+  changeGridSize.addEventListener("click", (e) => {
+    const divAmount = +prompt("Enter Grid Size: ");
+    showGrid(divAmount);
   });
-});
+
+  toggleGrid.addEventListener("click", (e) => {
+    document.querySelectorAll(".grid").forEach((v) => {
+      v.classList.toggle("toggleOutLine");
+    });
+  });
+
+  resetGrid.addEventListener("click", resetGridCells);
+}
+
+function initiateSketch() {
+  resetGridCells(100);
+  addToolbarHandlers();
+}
+
+initiateSketch();

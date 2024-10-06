@@ -45,10 +45,15 @@ body {
   align-items: center;
   justify-content: space-evenly;
   background-color: grey;
+  column-gap: 10px;
 }
-/* #toolbar > button:first-child {
-  margin-right: auto;
-} */
+#toolbar > #resetGrid {
+  height: 50px;
+  background: linear-gradient(rgb(255, 223, 205), rgb(238, 174, 170));
+  padding: 10px;
+  border: 3px rgba(212, 99, 0, 0.709) solid;
+  border-radius: 10px;
+}
 #toolbar > button {
   height: 50px;
   background: linear-gradient(blanchedalmond, palegoldenrod);
