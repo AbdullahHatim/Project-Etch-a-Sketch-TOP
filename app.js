@@ -1,4 +1,14 @@
-const divStack = [];
+let selectedColor = "red";
+const colorOptions = (function () {
+  const array = [];
+  document.querySelectorAll(".colorContainer > button").forEach((v) => {
+    array.push(v.classList[0]);
+    v.addEventListener("click", (e) => {
+      selectedColor = e.target.classList[0];
+    });
+  });
+  return array;
+})();
 
 let isLeftClick = false;
 
@@ -37,9 +47,15 @@ function showGrid(size = 100) {
   // Append the container to the body
   document.body.append(container);
 }
-
+function removeElementBackgroundColor(element) {
+  element.classList.remove(...colorOptions);
+}
+function changeElementBackgroundColor(element) {
+  removeElementBackgroundColor(element);
+  element.classList.add(`${selectedColor}`);
+}
 function mouseoverHandler(e) {
-  if (isLeftClick) e.target.style.backgroundColor = "red";
+  if (isLeftClick) changeElementBackgroundColor(e.target);
 }
 
 showGrid(100);
@@ -50,6 +66,6 @@ changeGridSize.addEventListener("click", (e) => {
 
 toggleGrid.addEventListener("click", (e) => {
   document.querySelectorAll(".grid").forEach((v) => {
-    v.classList.toggle("toggled");
+    v.classList.toggle("toggleOutLine");
   });
 });

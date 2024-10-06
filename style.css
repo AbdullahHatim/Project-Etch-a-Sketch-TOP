@@ -9,6 +9,12 @@ html {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -28,7 +34,8 @@ body {
   width: 25%;
   aspect-ratio: 1/1;
 }
-.grid.toggled {
+
+.toggleOutLine {
   border: 1px solid rgb(203, 203, 203);
 }
 #toolbar {
@@ -36,12 +43,12 @@ body {
   padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   background-color: grey;
 }
-#toolbar > button:first-child {
+/* #toolbar > button:first-child {
   margin-right: auto;
-}
+} */
 #toolbar > button {
   height: 50px;
   background: linear-gradient(blanchedalmond, palegoldenrod);
@@ -58,4 +65,36 @@ body {
   transform: translate(0%, 2%);
   border: inset yellow;
   background: linear-gradient(rgb(245, 210, 159), rgb(242, 234, 149));
+}
+
+.colorContainer {
+  margin: 0px auto;
+  flex-grow: 0.8;
+  height: 60px;
+  padding: 5px;
+  column-gap: 10px;
+  background-color: azure;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.colorContainer > button {
+  height: 25px;
+  aspect-ratio: 1/1;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
 }
