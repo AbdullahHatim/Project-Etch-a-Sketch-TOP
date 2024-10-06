@@ -1,19 +1,22 @@
-let selectedColor = "red";
 const colorOptions = getColorOptions();
-
+let selectedColor = "red";
 let isLeftClick = false;
 
 function getColorOptions() {
-  const array = [];
-  document.querySelectorAll(".colorContainer > button").forEach((v) => {
-    array.push(v.classList[0]);
-    v.addEventListener("click", (e) => {
+  const colors = [];
+  const colorButtons = document.querySelectorAll(".colorContainer > button");
+
+  // Foreach color button get its color name
+  colorButtons.forEach((button) => {
+    colors.push(button.classList[0]);
+    button.addEventListener("click", (e) => {
       selectedColor = e.target.classList[0];
     });
   });
-  return array;
+  return colors;
 }
-function showGrid(size = 100) {
+
+function getNewContainer() {
   // Remove the previous container if it exists
   const oldContainer = document.querySelector(".container");
   if (oldContainer) {
@@ -24,28 +27,38 @@ function showGrid(size = 100) {
   const container = document.createElement("div");
   container.classList.add("container");
 
-  if (!size || size > 100) {
-    size = 100;
-  }
-  const percentage = (1 / size) * 100;
-  size = size ** 2;
+  return container;
+}
 
-  for (let i = 0; i < size; i++) {
-    const div = document.createElement("div");
-    div.classList.add("grid");
-    div.style.width = `${percentage}%`;
-    container.appendChild(div);
-  }
-
-  container.addEventListener("mouseover", mouseoverHandler);
+function addDrawHandlers(container) {
+  container.addEventListener("mouseover", (e) => {
+    if (isLeftClick) changeElementBackgroundColor(e.target);
+  });
   container.addEventListener("mousedown", (e) => {
     isLeftClick = e.button === 0;
   });
   container.addEventListener("mouseup", () => {
     isLeftClick = false;
   });
+}
 
-  // Append the container to the body
+function showGrid(size = 100) {
+  const container = getNewContainer();
+
+  if (!size || size > 100) {
+    size = 100;
+  }
+  const widthPercentage = (1 / size) * 100;
+  size = size ** 2;
+
+  for (let i = 0; i < size; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("grid");
+    cell.style.width = `${widthPercentage}%`;
+    container.appendChild(cell);
+  }
+
+  addDrawHandlers(container);
   document.body.append(container);
 }
 function removeElementBackgroundColor(element) {
@@ -55,9 +68,7 @@ function changeElementBackgroundColor(element) {
   removeElementBackgroundColor(element);
   element.classList.add(`${selectedColor}`);
 }
-function mouseoverHandler(e) {
-  if (isLeftClick) changeElementBackgroundColor(e.target);
-}
+function mouseoverHandler(e) {}
 
 showGrid(100);
 changeGridSize.addEventListener("click", (e) => {
