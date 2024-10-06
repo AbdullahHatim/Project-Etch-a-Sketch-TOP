@@ -3,9 +3,15 @@ const divStack = [];
 let isLeftClick = false;
 
 function showGrid(size = 100) {
-  document.querySelector(".container").remove();
+  // Remove the previous container if it exists
+  const oldContainer = document.querySelector(".container");
+  if (oldContainer) {
+    oldContainer.remove();
+  }
+
+  // Create a new container
   const container = document.createElement("div");
-  container.classList.toggle("container");
+  container.classList.add("container");
 
   if (!size || size > 100) {
     size = 100;
@@ -15,18 +21,20 @@ function showGrid(size = 100) {
 
   for (let i = 0; i < size; i++) {
     const div = document.createElement("div");
-    div.classList.toggle("grid");
-    div.style["width"] = `${percentage}%`;
+    div.classList.add("grid");
+    div.style.width = `${percentage}%`;
     container.appendChild(div);
   }
+
   container.addEventListener("mouseover", mouseoverHandler);
   container.addEventListener("mousedown", (e) => {
     isLeftClick = e.button === 0;
   });
-
   container.addEventListener("mouseup", () => {
     isLeftClick = false;
   });
+
+  // Append the container to the body
   document.body.append(container);
 }
 
@@ -38,4 +46,10 @@ showGrid(100);
 changeGridSize.addEventListener("click", (e) => {
   const divAmount = +prompt("Enter Grid Size: ");
   showGrid(divAmount);
+});
+
+toggleGrid.addEventListener("click", (e) => {
+  document.querySelectorAll(".grid").forEach((v) => {
+    v.classList.toggle("toggled");
+  });
 });
