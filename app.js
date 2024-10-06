@@ -1,5 +1,9 @@
 let selectedColor = "red";
-const colorOptions = (function () {
+const colorOptions = getColorOptions();
+
+let isLeftClick = false;
+
+function getColorOptions() {
   const array = [];
   document.querySelectorAll(".colorContainer > button").forEach((v) => {
     array.push(v.classList[0]);
@@ -8,10 +12,7 @@ const colorOptions = (function () {
     });
   });
   return array;
-})();
-
-let isLeftClick = false;
-
+}
 function showGrid(size = 100) {
   // Remove the previous container if it exists
   const oldContainer = document.querySelector(".container");
