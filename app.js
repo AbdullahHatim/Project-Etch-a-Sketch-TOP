@@ -103,6 +103,30 @@ function showGrid(size = 40) {
     const cell = document.createElement("div");
     cell.classList.add("grid");
     cell.style.width = `${widthPercentage}%`;
+
+    // Author Of Touch Handling: claude.ai
+    cell.addEventListener(
+      "touchstart",
+      (event) => {
+        event.preventDefault();
+        changeElementBackgroundColor(event.currentTarget);
+      },
+      { passive: false }
+    );
+
+    cell.addEventListener(
+      "touchmove",
+      (event) => {
+        event.preventDefault();
+        const touch = event.touches[0];
+        const target = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (target && target.classList.contains("grid")) {
+          changeElementBackgroundColor(target);
+        }
+      },
+      { passive: false }
+    );
+
     container.appendChild(cell);
   }
 
