@@ -86,7 +86,7 @@ function addDrawHandlers(container) {
   });
 }
 
-function showGrid(size = 100) {
+function showGrid(size = 40) {
   const container = getNewContainer();
 
   if (!size || size > 100) {
@@ -107,7 +107,7 @@ function showGrid(size = 100) {
 }
 
 function resetGridCells() {
-  showGrid(100);
+  showGrid();
 }
 
 function addToolbarHandlers() {
@@ -127,7 +127,7 @@ function addToolbarHandlers() {
 }
 
 function initiateSketch() {
-  resetGridCells(100);
+  resetGridCells();
   addToolbarHandlers();
 }
 
