@@ -157,29 +157,29 @@ body {
 }
 
 .highlighterRed {
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
 .highlighterYellow {
-  background-color: rgba(255, 255, 0, 0.1);
+  background-color: rgba(255, 255, 0, 0.5);
 }
 
 .highlighterBlue {
-  background-color: rgba(0, 0, 255, 0.1);
+  background-color: rgba(0, 0, 255, 0.5);
 }
 
 .highlighterGreen {
-  background-color: rgba(0, 128, 0, 0.1);
+  background-color: rgba(0, 128, 0, 0.5);
 }
 
 .highlighterBlack {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .highlighterWhite {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .highlighterPurple {
-  background-color: rgba(128, 0, 128, 0.1);
+  background-color: rgba(128, 0, 128, 0.5);
 }
