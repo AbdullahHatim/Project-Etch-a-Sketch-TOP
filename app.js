@@ -30,6 +30,16 @@ function getNewContainer() {
   return container;
 }
 
+function setinteractionRGBEffect(element) {
+  removeElementBackgroundColor(element);
+  let randomIndex = Math.floor(
+    Math.random() * (colorOptions.length - SPECIAL_COLORS_COUNT)
+  );
+  selectedColor = colorOptions[randomIndex];
+  element.classList.add(`${selectedColor}`);
+  selectedColor = "interactionRGB";
+}
+
 function setBurnEffect(element) {
   if (element.style.filter) {
     let brightness = +element.style.filter.match(/\d+/)[0];
@@ -57,13 +67,7 @@ function removeElementBackgroundColor(element) {
 }
 function changeElementBackgroundColor(element) {
   if (selectedColor === "interactionRGB") {
-    removeElementBackgroundColor(element);
-    let randomIndex = Math.floor(
-      Math.random() * (colorOptions.length - SPECIAL_COLORS_COUNT)
-    );
-    selectedColor = colorOptions[randomIndex];
-    element.classList.add(`${selectedColor}`);
-    selectedColor = "interactionRGB";
+    setinteractionRGBEffect(element);
   } else if (selectedColor === "burner") {
     setBurnEffect(element);
   } else if (selectedColor.match("highlighter")) {
