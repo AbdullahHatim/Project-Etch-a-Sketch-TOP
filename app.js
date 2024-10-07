@@ -54,6 +54,16 @@ function changeElementBackgroundColor(element) {
     selectedColor = "interactionRGB";
   } else if (selectedColor === "burner") {
     setBurnEffect(element);
+  } else if (selectedColor.match("highlighter")) {
+    const color = selectedColor.replace("highlighter", "").toLowerCase();
+    if (element.style.opacity) {
+      let opacity = +element.style.opacity;
+      opacity += 0.1;
+      element.style.opacity = opacity;
+    } else {
+      element.style.opacity = 0.1;
+    }
+    element.classList.add(`${color}`);
   } else {
     removeElementBackgroundColor(element);
     element.classList.add(`${selectedColor}`);

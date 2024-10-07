@@ -155,3 +155,31 @@ body {
     rgb(255, 0, 0)
   );
 }
+
+.highlighterRed {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.highlighterYellow {
+  background-color: rgba(255, 255, 0, 0.1);
+}
+
+.highlighterBlue {
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+.highlighterGreen {
+  background-color: rgba(0, 128, 0, 0.1);
+}
+
+.highlighterBlack {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.highlighterWhite {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.highlighterPurple {
+  background-color: rgba(128, 0, 128, 0.1);
+}
