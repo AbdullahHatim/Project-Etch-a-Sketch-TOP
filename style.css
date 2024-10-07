@@ -76,6 +76,7 @@ body {
 .colorContainer {
   margin: 0px auto;
   flex-grow: 0.8;
+  max-width: 55%;
   /* height: 60px; */
   padding: 5px;
   column-gap: 10px;
@@ -155,7 +156,9 @@ body {
     rgb(255, 0, 0)
   );
 }
-
+.burner {
+  font-size: 7pt;
+}
 .highlighterRed {
   background-color: rgba(255, 0, 0, 0.5);
 }
@@ -192,5 +195,6 @@ body {
   .colorContainer {
     position: absolute;
     top: 70px;
+    max-width: 100%;
   }
 }
