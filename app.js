@@ -30,6 +30,16 @@ function getNewContainer() {
   return container;
 }
 
+function setBurnEffect(element) {
+  if (element.style.filter) {
+    let brightness = +element.style.filter.match(/\d+/)[0];
+    brightness -= 10;
+    element.style.filter = `brightness(${brightness}%)`;
+  } else {
+    element.style.filter = `brightness(100%)`;
+  }
+}
+
 function removeElementBackgroundColor(element) {
   element.classList.remove(...colorOptions);
 }
@@ -42,7 +52,8 @@ function changeElementBackgroundColor(element) {
     selectedColor = colorOptions[randomIndex];
     element.classList.add(`${selectedColor}`);
     selectedColor = "interactionRGB";
-  } else if (selectedColor === "s") {
+  } else if (selectedColor === "burner") {
+    setBurnEffect(element);
   } else {
     removeElementBackgroundColor(element);
     element.classList.add(`${selectedColor}`);

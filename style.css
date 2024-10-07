@@ -41,13 +41,12 @@ body {
   border: 1px solid rgb(203, 203, 203);
 }
 #toolbar {
-  height: 100px;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   background-color: grey;
-  column-gap: 10px;
+  gap: 10px;
 }
 #toolbar > #resetGrid {
   height: 50px;
@@ -77,11 +76,12 @@ body {
 .colorContainer {
   margin: 0px auto;
   flex-grow: 0.8;
-  height: 60px;
+  /* height: 60px; */
   padding: 5px;
   column-gap: 10px;
   background-color: azure;
   display: flex;
+  row-gap: 5px;
   flex-wrap: wrap;
 }
 
