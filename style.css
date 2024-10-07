@@ -183,3 +183,14 @@ body {
 .highlighterPurple {
   background-color: rgba(128, 0, 128, 0.5);
 }
+
+@media (max-width: 590px) {
+  .container {
+    position: relative;
+    top: 70px;
+  }
+  .colorContainer {
+    position: absolute;
+    top: 70px;
+  }
+}
